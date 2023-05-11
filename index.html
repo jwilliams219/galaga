@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" href="./images/Galaga_Fighter.png" type="image/x-icon" />
+    <link rel = "stylesheet" type = "text/css" href = "styles/game.css">
+    <title>Galaga</title>
+  </head>
+  <body onload = "MyGame.game.initialize();" id="body">
+    <img class="logo" src="images/Galaga_logo.svg" title="Galaga Logo">
+    <div id = "game">
+        <div id = "main-menu" class = "screen">
+            <ul class = "menu">
+                <li><button id = "id-new-game">Play&nbsp;Game</button></li>
+                <li><button id = "id-high-scores">High&nbsp;Scores</button></li>
+                <li><button id = "id-help">Options</button></li>
+                <li><button id = "id-about">Credits</button></li>
+            </ul>
+        </div>
+        <div id = "game-play" class = "screen">
+            <canvas id = "id-canvas" class="canvas" width="1200" height="1600"></canvas>
+        </div>
+        <div id = "high-scores" class = "screen">
+            <h1>High Scores</h1>
+            <ol id="high-score-list">
+            </ol>
+            <ul class = "menu">
+                <li><button id = "id-reset-high-scores" onclick="resetHighScores()" type="button">Reset High Scores</button></li>
+                <li><button id = "id-high-scores-back">Back</button></li>
+            </ul>
+        </div>
+        <div id = "help" class = "screen">
+            <h1>Options</h1>
+            <p>Edit</p>
+            <p>Move Left: <a id="move-left-btn" href="#">A or &#8592;</a></p>
+            <p>Move Right: <a id="move-right-btn" href="#">D or &#8594;</a></p>
+            <p>Fire Torpedo: <a id="fire-torpedo-btn" href="#">Spacebar</a></p>
+            <p>Torpedo Limit: <label class="switch">
+                <input type="checkbox" id="torpedo-limit-toggle">
+                <span class="slider round"></span>
+            </label></p>
+            <ul class = "menu">
+                <li><button id = "resetOptions" onclick="resetOptions()">Reset</button></li>
+                <li><button id = "id-help-back">Back</button></li>
+            </ul>
+        </div>
+        <div id = "about" class = "screen">
+            <h1>Credits</h1>
+            <p>Josh Williams</p>
+            <p>A02230365</p>
+            <p>Namco</p>
+            <ul class = "menu">
+                <li><button id = "id-about-back">Back</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let MyGame = {
+            screens : {},
+            input: {},
+            objects: {},
+            render: []
+        };
+    </script>
+    <script src = "scripts/systems/math.js"></script>
+    <script src = "scripts/systems/input-keyboard.js"></script>
+    <script src = "scripts/update.js"></script>
+    <script src = "scripts/render.js"></script>
+    <script src = "scripts/systems/particles.js"></script>
+    <script src = "scripts/systems/loadImages.js"></script>
+    <script src = "scripts/systems/loadSounds.js"></script>
+    <script src = "scripts/systems/pathing.js"></script>
+    <script src = "scripts/stages.js"></script>
+    <script src = "scripts/systems/savescores.js"></script>
+    <script src = "scripts/systems/saveOptions.js"></script>
+    <script src = "scripts/pages/game.js"></script>
+    <script src = "scripts/pages/mainmenu.js"></script>
+    <script src = "scripts/pages/highscores.js"></script>
+    <script src = "scripts/pages/help.js"></script>
+    <script src = "scripts/pages/about.js"></script>
+    <script src = "scripts/gameplay.js"></script>
+
+</body>
+</html>
