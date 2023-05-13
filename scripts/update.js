@@ -266,16 +266,16 @@ function fireTorpedo(fighter, torpedos, stats, sound) {
     }
 }
 
-function moveFighterLeft(fighter) {
-    fighter.center.x -= 6;
+function moveFighterLeft(fighter, value) {
+    fighter.center.x -= 8 * value;
     if (fighter.center.x < fighter.size.width/2) {
         fighter.center.x = fighter.size.width/2;
     }
 }
 
-function moveFighterRight(fighter) {
+function moveFighterRight(fighter, value) {
     let canvas = document.getElementById('id-canvas');
-    fighter.center.x += 6;
+    fighter.center.x += 8 * value;
     if (fighter.center.x + fighter.size.width/2 > canvas.width) {
         fighter.center.x = canvas.width - fighter.size.width/2;
     }
@@ -463,5 +463,57 @@ function updateAI(elapsedTime, ai, fighter, enemies, torpedos, stats, sound) {
         } else if (e.center.x > fighter.center.x) {
             fighter.center.x += moveSpeed;
         }
+    }
+}
+
+function mobileSupport(fighter, torpedos, stats, sound) {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.getElementById("game").style.height = "130vw";
+        document.getElementById("game").style.width = "98vw";
+        document.getElementById("game").style.margin = "4vh 0 4vh 0";
+        let mobileControls = document.getElementById("mobile-controls");
+        mobileControls.style.visibility = "visible";
+        var slider = document.getElementById("mobile-movement");
+        var start;
+        slider.addEventListener("touchstart", function(event) {
+            start = event.touches[0].clientX;
+        });
+
+        slider.addEventListener("touchmove", function(event) {
+            var current = event.touches[0].clientX;
+            var delta = current - start;
+            var value = parseInt(slider.value) + delta;
+            if (value < slider.min) {
+                value = slider.min;
+            } else if (value > slider.max) {
+                value = slider.max;
+            }
+            slider.value = value;
+            start = current;
+        });
+
+        slider.addEventListener("input", function() {
+            fighter.mobileMoveVal = slider.value;
+        });
+
+        slider.addEventListener("touchend", function(event) {
+            slider.value = 50;
+            fighter.mobileMoveVal = 50;
+        });
+
+        let fireButton = document.getElementById("mobile-fire");
+        fireButton.addEventListener("touchstart", function(event) {
+            if (stats.currentTime > 0) {
+                fireTorpedo(fighter, torpedos, stats, sound);
+            }
+        });
+    } 
+}
+
+function updateFighterMobile(fighter) {
+    if (fighter.mobileMoveVal < 50) {
+        moveFighterLeft(fighter, (1-(fighter.mobileMoveVal/50)));
+    } else if (fighter.mobileMoveVal > 50) {
+        moveFighterRight(fighter, ((fighter.mobileMoveVal-50)/50))
     }
 }

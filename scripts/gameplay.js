@@ -25,6 +25,7 @@ MyGame.screens['game-play'] = (function(game, input, graphics, images, sounds) {
             updateBackgroundStars(elapsedTime, backgroundStars);
             updateEnemies(elapsedTime, enemies, stats, torpedos, fighter, sound);
             updateTorpedos(elapsedTime, torpedos);
+            updateFighterMobile(fighter);
         }
         if (attractMode) {
             updateAI(elapsedTime, ai, fighter, enemies, torpedos, stats, sound);
@@ -70,7 +71,8 @@ MyGame.screens['game-play'] = (function(game, input, graphics, images, sounds) {
     function initialize() {
         backgroundStars = { stars: [] };
 
-        fighter = { lives: 3, img: images.loadFighter(), center: { x: 600, y: 1470 }, size: { width: 80, height: 80 }, dead: false, deadTimer: 0, invulnerableTimer: 1000}
+        fighter = { lives: 3, img: images.loadFighter(), center: { x: 600, y: 1470 }, size: { width: 80, height: 80 }, dead: false, deadTimer: 0, 
+            invulnerableTimer: 1000, mobileMoveVal: 50};
 
         torpedos = { friendly: [], enemy: [], img1: images.loadTorpedo1(), img2: images.loadTorpedo2(), size: {width: 15, height: 40}, noLimit: true};
 
@@ -106,6 +108,8 @@ MyGame.screens['game-play'] = (function(game, input, graphics, images, sounds) {
             endGame();
         });
         canvas.addEventListener('click', function() { fireTorpedo(fighter, torpedos, stats, sound); });
+
+        mobileSupport(fighter, torpedos, stats, sound);
     }
 
     function resetGame() {
@@ -155,9 +159,9 @@ MyGame.screens['game-play'] = (function(game, input, graphics, images, sounds) {
             for (let i = 0; i < options.length; i++) {
                 let option = options[i];
                 if (option.action === "left") {
-                    myKeyboard.register(option.key, function() { moveFighterLeft(fighter); });
+                    myKeyboard.register(option.key, function() { moveFighterLeft(fighter, 1); });
                 } else if (option.action === "right") {
-                    myKeyboard.register(option.key, function() { moveFighterRight(fighter); });
+                    myKeyboard.register(option.key, function() { moveFighterRight(fighter, 1); });
                 } else if (option.action === "fire") {
                     myKeyboard.register(option.key, function() { fireTorpedo(fighter, torpedos, stats, sound); });
                     myKeyboard.setFireKey(option.key);

@@ -52,7 +52,7 @@ MyGame.graphics = (function() {
 
     function drawScore(stats) {
         drawText({ font: "32px Arial", fillStyle: "white", strokeStyle: "white", position: { x: 50, y: 50}, rotation: 0, text: "Score: "+stats.score});
-        drawText({ font: "56px Arial", fillStyle: "hsl(0, 70%, 50%)", strokeStyle: "red", position: { x: canvas.width/2-140, y: 2}, rotation: 0, text: "High Score"});
+        drawText({ font: "56px Arial", fillStyle: "hsl(0, 70%, 50%)", strokeStyle: "black", position: { x: canvas.width/2-140, y: 2}, rotation: 0, text: "High Score"});
         ctx.font = '42px Arial';
         const width = ctx.measureText(stats.highScore+"").width;
         drawText({ font: "42px Arial", fillStyle: "white", strokeStyle: "white", position: { x: canvas.width/2-(width/2), y: 65}, rotation: 0, text: stats.highScore});
@@ -61,21 +61,21 @@ MyGame.graphics = (function() {
     function showCurrentStageBeginning(stage) {
         if (stage.showStageTimer > 0) {  
             if (stage.currentStage % 4 === 3) {
-                drawText({ font: "52px Arial", fillStyle: "#0fe3d3", strokeStyle: "#0fe3d3", position: {x: canvas.width/2-180, y: canvas.height/2-50}, rotation: 0, text: "Challenging Stage"});
+                drawText({ font: "52px Arial", fillStyle: "#0fe3d3", strokeStyle: "black", position: {x: canvas.width/2-180, y: canvas.height/2-50}, rotation: 0, text: "Challenging Stage"});
             } else {
-                drawText({ font: "52px Arial", fillStyle: "#0fe3d3", strokeStyle: "#0fe3d3", position: {x: canvas.width/2-100, y: canvas.height/2-50}, rotation: 0, text: "Stage " + stage.currentStage});
+                drawText({ font: "52px Arial", fillStyle: "#0fe3d3", strokeStyle: "black", position: {x: canvas.width/2-100, y: canvas.height/2-50}, rotation: 0, text: "Stage " + stage.currentStage});
             }
         }
     }
 
     function showStats(stats) {
         if (stats.showPlayerStats && !attractMode) {
-            drawText({ font: "52px Arial", fillStyle: "#0fe3d3", strokeStyle: "#0fe3d3", position: {x: canvas.width/2-160, y: canvas.height/2-50}, rotation: 0, text: "Number of hits: " + stats.stage.hits});
+            drawText({ font: "52px Arial", fillStyle: "#0fe3d3", strokeStyle: "black", position: {x: canvas.width/2-160, y: canvas.height/2-50}, rotation: 0, text: "Number of hits: " + stats.stage.hits});
         } else if (stats.showPlayerResults && !attractMode) {
-            drawText({ font: "58px Arial", fillStyle: "hsl(0, 70%, 50%)", strokeStyle: "red", position: {x: canvas.width/2-100, y: canvas.height/2-150}, rotation: 0, text: "Results"});
-            drawText({ font: "52px Arial", fillStyle: "#0fe3d3", strokeStyle: "#0fe3d3", position: {x: canvas.width/2-200, y: canvas.height/2-50}, rotation: 0, text: "Shots Fired: " + stats.totalTorpedosFired});
-            drawText({ font: "52px Arial", fillStyle: "#0fe3d3", strokeStyle: "#0fe3d3", position: {x: canvas.width/2-200, y: canvas.height/2+50}, rotation: 0, text: "Number of hits: " + stats.totalHits});
-            drawText({ font: "52px Arial", fillStyle: "white", strokeStyle: "white", position: {x: canvas.width/2-200, y: canvas.height/2+150}, rotation: 0, text: "Hit-Miss Ratio: " + (stats.totalHits/stats.totalTorpedosFired*100).toFixed(2) + "%"});
+            drawText({ font: "58px Arial", fillStyle: "hsl(0, 70%, 50%)", strokeStyle: "black", position: {x: canvas.width/2-100, y: canvas.height/2-150}, rotation: 0, text: "Results"});
+            drawText({ font: "52px Arial", fillStyle: "#0fe3d3", strokeStyle: "black", position: {x: canvas.width/2-200, y: canvas.height/2-50}, rotation: 0, text: "Shots Fired: " + stats.totalTorpedosFired});
+            drawText({ font: "52px Arial", fillStyle: "#0fe3d3", strokeStyle: "black", position: {x: canvas.width/2-200, y: canvas.height/2+50}, rotation: 0, text: "Number of hits: " + stats.totalHits});
+            drawText({ font: "52px Arial", fillStyle: "white", strokeStyle: "black", position: {x: canvas.width/2-200, y: canvas.height/2+150}, rotation: 0, text: "Hit-Miss Ratio: " + (stats.totalHits/stats.totalTorpedosFired*100).toFixed(2) + "%"});
         }
     }
 

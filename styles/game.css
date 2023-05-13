@@ -47,7 +47,7 @@ ul.menu li {
     margin: 0.8em 0;
 }
 
-ul.menu li button {
+button {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 20px;
     font-weight: bold;
@@ -185,3 +185,74 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+#mobile-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 10vh;
+    width: 100vw;
+    visibility: hidden;
+}
+
+#mobile-controls button {
+    margin: 0 0 0 18vw;
+    width: 12vw;
+    height: 12vw;
+    background: #ff0b00;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+#mobile-movement {
+    -webkit-appearance: none;
+    width: 50vw;
+    height: 12vw;
+    background: #29323c;
+    border: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    position: relative;
+}
+  
+#mobile-movement::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12vw;
+    height: 12vw;
+    background: #95b365;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+  
+#mobile-movement::-moz-range-thumb {
+    width: 12vw;
+    height: 12vw;
+    background: #95b365;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+  
+#mobile-movement::before,
+#mobile-movement::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 8.7px;
+    border-color: transparent transparent transparent #fff;
+}
+  
+#mobile-movement::before {
+    left: 0;
+}
+  
+#mobile-movement::after {
+    right: 0;
+    border-width: 5px 8.7px 5px 0;
+    border-color: transparent #fff transparent transparent;
+}  
