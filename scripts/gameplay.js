@@ -25,7 +25,7 @@ MyGame.screens['game-play'] = (function(game, input, graphics, images, sounds) {
             updateBackgroundStars(elapsedTime, backgroundStars);
             updateEnemies(elapsedTime, enemies, stats, torpedos, fighter, sound);
             updateTorpedos(elapsedTime, torpedos);
-            updateFighterMobile(fighter);
+            updateFighterMobile(elapsedTime, fighter);
         }
         if (attractMode) {
             updateAI(elapsedTime, ai, fighter, enemies, torpedos, stats, sound);

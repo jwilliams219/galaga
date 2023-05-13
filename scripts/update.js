@@ -510,10 +510,10 @@ function mobileSupport(fighter, torpedos, stats, sound) {
     } 
 }
 
-function updateFighterMobile(fighter) {
+function updateFighterMobile(elapsedTime, fighter) {
     if (fighter.mobileMoveVal < 50) {
-        moveFighterLeft(fighter, (1-(fighter.mobileMoveVal/50)));
+        moveFighterLeft(fighter, (1-(fighter.mobileMoveVal/50))*elapsedTime/6);
     } else if (fighter.mobileMoveVal > 50) {
-        moveFighterRight(fighter, ((fighter.mobileMoveVal-50)/50))
+        moveFighterRight(fighter, ((fighter.mobileMoveVal-50)/50)*elapsedTime/6)
     }
 }
