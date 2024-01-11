@@ -21,7 +21,7 @@ function updateTime(elapsedTime, stats, fighter) {
 }
 
 function updateBackgroundStars(elapsedTime, backgroundStars) {
-    if (backgroundStars !== {}) {
+    if (Object.keys(backgroundStars).length !== 0) {
         let canvas = document.getElementById('id-canvas');
         // Update current stars.
         let remove = [];

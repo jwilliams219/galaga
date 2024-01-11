@@ -148,6 +148,8 @@ function getDivePath(enemy) {
         let angle = angleBetweenPoints(x, y, enemy.formationLocation[0], enemy.formationLocation[1])
         path = [[enemy.formationLocation[0], enemy.formationLocation[1], angle]];
         enemy.diving = false;
+    } else if (y > 1550) { // Prevent last second circle or something.
+        path.push([x, y+100, 180]);
     } else if (Math.random() < 0.8) {
         path.push([x, y+100, 180]);
     } else if (Math.random() < 0.5) { // Slant
