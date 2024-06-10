@@ -2,7 +2,7 @@
 
 
 ## Description
-This project is a recreation of the classic arcade game Galaga, implemented in JavaScript. I was inspired to recreate this game to learn more about game development in JavaScript and to bring a piece of nostalgia to the web. It is very similar to the original and uses some of the same visual sprites, but is not an exact copy. 
+This project is a recreation of the classic arcade game Galaga, implemented in JavaScript. I was inspired to recreate this game to learn more about game development and to bring a piece of nostalgia to the web. The game has been constructed from the ground up, using its own game engine in developed in JavaScript. This approach was adopted to gain a deeper understanding of some of the fundamental systems in game development. The game is very similar to the original and uses some of the same visual sprites, but is not an exact copy. 
 
 You can play the game [here](https://jwilliams219.github.io/galaga/). It works on PC/Mobile Chrome, Firefox, and Edge.
 
